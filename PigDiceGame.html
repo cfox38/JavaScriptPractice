@@ -2,16 +2,42 @@
 <html lang="en">
 <head> 
     <title></title>
-    
+
     <script lang="javascript">
 
+    var arr=[];
+    var lblCtrl;
+    var die = roll();
 
-    	
-    	function Main() {
+    	function Main(){
+    		lblCtrl = document.getElementById("lbl");
+    	} 
+    	function roll() {
+    		return Math.floor(Math.random()*6 + 1);
+    	}
+
+    	function playpigdice(){
+    		var arr =[];
+    		var total = 0;
+    		var rollValue = roll(); 
+    		while(rollValue !=1) 
+    		display();
+
+    		{
+    			total+= rollValue;
+    			arr.push(rollValue);
+    			rollValue = roll();
+    		}
+ 		function display()
+ 			{
+ 			lblCtrl.rollvalue= rollValue;
+ 			} 
 
     	}
 	</script>
 </head>
 <body OnLoad="Main()">
+	<button OnClick = "playpigdice()"> PlayPigDice</button>
+	<label id = "lbl"></label>
 </body>
 </html>
