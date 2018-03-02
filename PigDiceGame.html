@@ -5,39 +5,28 @@
 
     <script lang="javascript">
 
-    var arr=[];
-    var lblCtrl;
-    var die = roll();
-
-    	function Main(){
-    		lblCtrl = document.getElementById("lbl");
-    	} 
-    	function roll() {
-    		return Math.floor(Math.random()*6 + 1);
-    	}
-
-    	function playpigdice(){
-    		var arr =[];
+    	function PlayGame(){
+    		var arr = [];
     		var total = 0;
-    		var rollValue = roll(); 
-    		while(rollValue !=1) 
-    		display();
 
-    		{
-    			total+= rollValue;
-    			arr.push(rollValue);
-    			rollValue = roll();
+    		var roll = RollDie();
+    		while(roll !=1) {
+    			arr.push(roll);
+    			roll = RollDie();
     		}
- 		function display()
- 			{
- 			lblCtrl.rollvalue= rollValue;
- 			} 
 
+    		var lblCtrl= document.getElementById("results");
+    		lblCtrl.textContent= arr.join(",") + " :: " + total;
     	}
+    	function RollDie() {
+    		return Math.floor(Math.random()*6)+1;
+    	}
+
 	</script>
 </head>
-<body OnLoad="Main()">
-	<button OnClick = "playpigdice()"> PlayPigDice</button>
-	<label id = "lbl"></label>
+<body>
+	<button OnClick = "PlayGame()"> PlayPigDice</button>
+	<label id = "results"></label>
 </body>
 </html>
+
